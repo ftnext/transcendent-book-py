@@ -1,0 +1,12 @@
+---
+title: Car
+---
+classDiagram
+    class Car
+    Car : Engine engine
+    Car : Wheel[] wheels
+    Car : +startEngine()
+    class Engine
+    class Wheel
+    Car *-- Engine
+    Car *-- "4" Wheel
