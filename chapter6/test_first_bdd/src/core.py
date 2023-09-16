@@ -1,2 +1,3 @@
 class NumberConverter:
-    pass
+    def convert(self, n: int) -> str:
+        return ""
