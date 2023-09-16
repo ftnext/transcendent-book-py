@@ -13,3 +13,4 @@ class NumberConverterTestCase(TestCase):
         self.assertEqual("4", fizz_buzz.convert(4))
         self.assertEqual("Buzz", fizz_buzz.convert(5))
         self.assertEqual("Fizz", fizz_buzz.convert(6))
+        self.assertEqual("Buzz", fizz_buzz.convert(10))
