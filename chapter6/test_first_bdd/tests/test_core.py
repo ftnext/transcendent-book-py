@@ -8,3 +8,4 @@ class NumberConverterTestCase(TestCase):
         fizz_buzz = NumberConverter()
 
         self.assertEqual("1", fizz_buzz.convert(1))
+        self.assertEqual("2", fizz_buzz.convert(2))
