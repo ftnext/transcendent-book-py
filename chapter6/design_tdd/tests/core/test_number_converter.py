@@ -35,3 +35,10 @@ class NumberConverterTestCase(TestCase):
         ) as buzz_rule:
             fizz_buzz = NumberConverter([fizz_rule, buzz_rule])
             self.assertEqual("FizzBuzz", fizz_buzz.convert(1))
+
+    def test_convert_with_unmatched_fizz_buzz_rule_and_constant_rule(self):
+        with _create_mock_rule(1, "") as fizz_rule, _create_mock_rule(
+            1, ""
+        ) as buzz_rule, _create_mock_rule(1, "1") as constant_rule:
+            fizz_buzz = NumberConverter([fizz_rule, buzz_rule, constant_rule])
+            self.assertEqual("1", fizz_buzz.convert(1))
