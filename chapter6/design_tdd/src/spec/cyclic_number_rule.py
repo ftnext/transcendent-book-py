@@ -3,5 +3,8 @@ class CyclicNumberRule:
         self.base = base
         self.replacement = replacement
 
-    def replace(self, n: int) -> str:
-        return self.replacement if n % self.base == 0 else ""
+    def apply(self, carry: str, n: int) -> str:
+        return carry + self.replacement
+
+    def match(self, carry: str, n: int) -> bool:
+        return n % self.base == 0
