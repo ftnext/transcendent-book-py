@@ -8,7 +8,8 @@ class NumberConverter:
         self.rules = rules
 
     def convert(self, n: int) -> str:
-        result = ""
+        carry = ""
         for rule in self.rules:
-            result += rule.replace(n)
-        return result
+            if rule.match(carry, n):
+                carry = rule.apply(carry, n)
+        return carry
