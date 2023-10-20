@@ -1,14 +1,18 @@
-from typing import Protocol
+from typing import ABCMeta, abstractmethod
+
+from injector import inject
 
 from src.core import NumberConverter
 
 
-class OutputInterface(Protocol):
+class OutputInterface(metaclass=ABCMeta):
+    @abstractmethod
     def write(self, data: str) -> None:
-        ...
+        raise NotImplementedError
 
 
 class FizzBuzzSequencePrinter:
+    @inject
     def __init__(
         self, fizzbuzz: NumberConverter, output: OutputInterface
     ) -> None:
