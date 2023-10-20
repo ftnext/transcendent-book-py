@@ -15,14 +15,25 @@ class ConsoleOutput(OutputInterface):
         print(data, end="")
 
 
+class FizzRule(CyclicNumberRule):
+    def __init__(self) -> None:
+        super().__init__(3, "Fizz")
+
+
+class BuzzRule(CyclicNumberRule):
+    def __init__(self) -> None:
+        super().__init__(5, "Buzz")
+
+
 class FizzBuzzAppModule(Module):
     @multiprovider
-    def provide_output_interface(self) -> Iterable[ReplaceRuleInterface]:
-        return [
-            CyclicNumberRule(3, "Fizz"),
-            CyclicNumberRule(5, "Buzz"),
-            PassThroughRule(),
-        ]
+    def provide_output_interface(
+        self,
+        fizz_rule: FizzRule,
+        buzz_rule: BuzzRule,
+        pass_rule: PassThroughRule,
+    ) -> Iterable[ReplaceRuleInterface]:
+        return [fizz_rule, buzz_rule, pass_rule]
 
 
 def configure_output(binder):
